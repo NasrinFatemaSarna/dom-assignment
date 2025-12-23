@@ -1,3 +1,11 @@
+## 👤 Author
+
+**Nasrin Fatema Sarna**  
+📧 Email: sarnaqueen@gmail.com  
+GitHub: https://github.com/NasrinFatemaSarna
+
+
+
 # 🍽️ DOM Assignment – Restaurant Website
 
 A modern, responsive restaurant website built using **HTML, CSS, and JavaScript**, featuring dynamic recipe search powered by **TheMealDB API**.
