@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <a href="#home" class="logo" aria-label="Go to home">
+        <img src="./images/logo.png" alt="Restaurant Logo" />
+      </a>
+
+      <nav class="links" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#review">Review</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#blogs">Blogs</a></li>
+        </ul>
+      </nav>
+
+      <div class="others">
+        <button class="search-btn" id="openSearchBtn" type="button" aria-label="Open search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+        <button class="cart-btn" id="openCartBtn" type="button" aria-label="Open cart">
+          <ion-icon name="cart-outline"></ion-icon>
+        </button>
+
+        <button class="bar-btn" id="openMenuBtn" type="button" aria-label="Open menu">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Banner / Hero -->
+      <section class="banner" id="home">
+        <img class="banner-img" src="./images/heroimage.jpg" alt="Delicious food on a table" />
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h1>Find Your Favorite Food</h1>
+            <p>
+              Search recipes instantly using TheMealDB API. View ingredients,
+              instructions, and add items to your cart.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search Area -->
+      <section class="search-area" aria-label="Main search">
+        <label for="mainSearchInput" class="search-label"></label>
+
+        <!-- ✅ FIX: form added -->
+        <form class="search-box" id="searchForm" autocomplete="off">
+          <input
+            id="mainSearchInput"
+            type="text"
+            placeholder="Search recipes (e.g., chicken, pasta...)"
+            aria-label="Search recipes"
+            autocomplete="off"
+          />
+          <button id="mainSearchBtn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </form>
+      </section>
+
+      <!-- Menu / Recipes -->
+      <section class="menu title" id="menu">
+        <h1>Our <span>Menu</span></h1>
+
+        <p class="api-status" id="apiStatus">
+          Type a keyword in search box (ex: egg, chicken, fish, rice...) to load recipes.
+        </p>
+
+        <div class="menu-items" id="menuItems">
+          <!-- Static Cards -->
+          <div class="menu-item static">
+            <img src="./images/specialdish.jpg" alt="Chef Special" />
+            <h2>Chef Special</h2>
+            <p>Try our signature dish — rich flavor, fresh ingredients.</p>
+            <div class="price">
+              <h3>$8.00</h3>
+              <button type="button" class="add-cart" data-id="static_chef" data-title="Chef Special" data-price="8">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/combomeal.jpg" alt="Combo Meal" />
+            <h2>Combo Meal</h2>
+            <p>Perfect for lunch — tasty, filling and affordable.</p>
+            <div class="price">
+              <h3>$10.00</h3>
+              <button type="button" class="add-cart" data-id="static_combo" data-title="Combo Meal" data-price="10">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/hotcoffee.jpg" alt="Hot Espresso" />
+            <h2>Hot Coffee</h2>
+            <p>Freshly brewed coffee—strong, warm, and energizing.</p>
+            <div class="price">
+              <h3>$4.00</h3>
+              <button type="button" class="add-cart" data-id="static_coffee" data-title="Hot Coffee" data-price="4">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- New items -->
+          <div class="menu-item static">
+            <img src="./images/chicken-burger.jpg" alt="Chicken Burger" />
+            <h2>Chicken Burger</h2>
+            <p>Juicy grilled chicken with fresh lettuce and sauce.</p>
+            <div class="price">
+              <h3>$6.50</h3>
+              <button type="button" class="add-cart" data-id="static_burger" data-title="Chicken Burger" data-price="6.5">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/pizza.jpg" alt="Cheese Pizza" />
+            <h2>Cheese Pizza</h2>
+            <p>Classic pizza loaded with melted mozzarella cheese.</p>
+            <div class="price">
+              <h3>$9.00</h3>
+              <button type="button" class="add-cart" data-id="static_pizza" data-title="Cheese Pizza" data-price="9">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/fried-rice.jpg" alt="Fried Rice" />
+            <h2>Fried Rice</h2>
+            <p>Steamed rice stir-fried with veggies and egg.</p>
+            <div class="price">
+              <h3>$5.50</h3>
+              <button type="button" class="add-cart" data-id="static_friedrice" data-title="Fried Rice" data-price="5.5">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/pasta.jpg" alt="Creamy Pasta" />
+            <h2>Creamy Pasta</h2>
+            <p>Italian pasta cooked in rich creamy sauce.</p>
+            <div class="price">
+              <h3>$7.50</h3>
+              <button type="button" class="add-cart" data-id="static_pasta" data-title="Creamy Pasta" data-price="7.5">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/grilled-fish.jpg" alt="Grilled Fish" />
+            <h2>Grilled Fish</h2>
+            <p>Fresh fish grilled with herbs and lemon.</p>
+            <div class="price">
+              <h3>$11.00</h3>
+              <button type="button" class="add-cart" data-id="static_fish" data-title="Grilled Fish" data-price="11">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/beef-steak.jpg" alt="Beef Steak" />
+            <h2>Beef Steak</h2>
+            <p>Premium beef steak cooked to perfection.</p>
+            <div class="price">
+              <h3>$14.00</h3>
+              <button type="button" class="add-cart" data-id="static_steak" data-title="Beef Steak" data-price="14">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/ice-cream.jpg" alt="Vanilla Ice Cream" />
+            <h2>Vanilla Ice Cream</h2>
+            <p>Cold and creamy vanilla flavored ice cream.</p>
+            <div class="price">
+              <h3>$3.50</h3>
+              <button type="button" class="add-cart" data-id="static_icecream" data-title="Vanilla Ice Cream" data-price="3.5">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/orange-juice.jpg" alt="Fresh Orange Juice" />
+            <h2>Orange Juice</h2>
+            <p>Freshly squeezed oranges, full of vitamin C.</p>
+            <div class="price">
+              <h3>$4.50</h3>
+              <button type="button" class="add-cart" data-id="static_juice" data-title="Orange Juice" data-price="4.5">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-item static">
+            <img src="./images/chocolate-cake.jpg" alt="Chocolate Cake" />
+            <h2>Chocolate Cake</h2>
+            <p>Soft, rich and moist chocolate cake with creamy topping.</p>
+            <div class="price">
+              <h3>$6.00</h3>
+              <button type="button" class="add-cart" data-id="static_chocolate_cake" data-title="Chocolate Cake" data-price="6">
+                Purchase <ion-icon name="cart"></ion-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="products title" id="products">
+        <h1>Latest <span>Products</span></h1>
+
+        <div class="products-items">
+          <div class="products-item">
+            <img src="./images/Premium Coffee Beans.jpg" alt="Premium Coffee Beans" />
+            <h2>Premium Coffee Beans</h2>
+
+            <div class="products-rating" aria-label="Rating: 5 out of 5">
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            </div>
+
+            <div class="products-price">
+              <h3>$15.99</h3>
+              <strike>$20.99</strike>
+            </div>
+
+            <div class="products-cta">
+              <button type="button" class="add-cart" data-id="prod_beans" data-title="Premium Coffee Beans" data-price="15.99" aria-label="Add Premium Coffee Beans to cart">
+                <ion-icon name="cart"></ion-icon>
+              </button>
+              <button type="button" aria-label="Like Premium Coffee Beans"><ion-icon name="heart"></ion-icon></button>
+              <button type="button" aria-label="View Premium Coffee Beans"><ion-icon name="eye"></ion-icon></button>
+            </div>
+          </div>
+
+          <div class="products-item">
+            <img src="./images/Chocolate-dessert.jpg" alt="Chocolate Dessert" />
+            <h2>Chocolate Dessert</h2>
+
+            <div class="products-rating" aria-label="Rating: 4.5 out of 5">
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
+            </div>
+
+            <div class="products-price">
+              <h3>$12.49</h3>
+              <strike>$16.49</strike>
+            </div>
+
+            <div class="products-cta">
+              <button type="button" class="add-cart" data-id="prod_dessert" data-title="Chocolate Dessert" data-price="12.49" aria-label="Add Chocolate Dessert to cart">
+                <ion-icon name="cart"></ion-icon>
+              </button>
+              <button type="button" aria-label="Like Chocolate Dessert"><ion-icon name="heart"></ion-icon></button>
+              <button type="button" aria-label="View Chocolate Dessert"><ion-icon name="eye"></ion-icon></button>
+            </div>
+          </div>
+
+          <div class="products-item">
+            <img src="./images/espresso.set.jpg" alt="Espresso Set" />
+            <h2>Espresso Set</h2>
+
+            <div class="products-rating" aria-label="Rating: 5 out of 5">
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            </div>
+
+            <div class="products-price">
+              <h3>$20.00</h3>
+              <strike>$25.00</strike>
+            </div>
+
+            <div class="products-cta">
+              <button type="button" class="add-cart" data-id="prod_set" data-title="Espresso Set" data-price="20" aria-label="Add Espresso Set to cart">
+                <ion-icon name="cart"></ion-icon>
+              </button>
+              <button type="button" aria-label="Like Espresso Set"><ion-icon name="heart"></ion-icon></button>
+              <button type="button" aria-label="View Espresso Set"><ion-icon name="eye"></ion-icon></button>
+            </div>
+          </div>
+
+          <div class="products-item">
+            <img src="./images/iced-latte.jpg" alt="Iced Latte" />
+            <h2>Iced Latte</h2>
+
+            <div class="products-rating" aria-label="Rating: 4 out of 5">
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="products-price">
+              <h3>$9.99</h3>
+              <strike>$12.99</strike>
+            </div>
+
+            <div class="products-cta">
+              <button type="button" class="add-cart" data-id="prod_latte" data-title="Iced Latte" data-price="9.99" aria-label="Add Iced Latte to cart">
+                <ion-icon name="cart"></ion-icon>
+              </button>
+              <button type="button" aria-label="Like Iced Latte"><ion-icon name="heart"></ion-icon></button>
+              <button type="button" aria-label="View Iced Latte"><ion-icon name="eye"></ion-icon></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="about title" id="about">
+        <h1>About <span>Us</span></h1>
+        <div class="about-details">
+          <div class="about-image">
+            <img src="./images/about.jpg" alt="About our restaurant" />
+          </div>
+          <div class="about-text">
+            <h2>Why people love our restaurant?</h2>
+            <p>Fresh ingredients, skilled chefs, and fast service—everything made with care.</p>
+            <p>Try searching meals above to discover recipes and new ideas for your menu.</p>
+            <button type="button">Read More</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Review -->
+      <section class="review title" id="review">
+        <h1>What <span>Our Customers</span> Say</h1>
+        <div class="reviews">
+          <div class="reviews-user">
+            <div class="review-image">
+              <img src="./images/user-1.jpg" alt="John Doe" />
+              <div class="review-profile">
+                <h3>John Doe</h3>
+                <div aria-label="Rating: 4 out of 5">
+                  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                </div>
+              </div>
+            </div>
+            <div class="review-text">
+              <p>Great food and amazing service. The ambience is perfect for family and friends.</p>
+            </div>
+          </div>
+
+          <div class="reviews-user">
+            <div class="review-image">
+              <img src="./images/user-2.jpg" alt="Alex Doe" />
+              <div class="review-profile">
+                <h3>Alex Doe</h3>
+                <div aria-label="Rating: 4 out of 5">
+                  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                </div>
+              </div>
+            </div>
+            <div class="review-text">
+              <p>Love the recipes search feature. I found many meals to try at home.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="contact title" id="contact">
+        <h1>Contact <span>Us</span></h1>
+
+        <div class="contact-details">
+          <iframe
+            width="50%"
+            height="600"
+            frameborder="0"
+            title="Google Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+          </iframe>
+
+          <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form>
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <textarea rows="5" placeholder="Your Message" required></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blogs -->
+      <section class="blogs title" id="blogs">
+        <h1>Our <span>Blogs</span></h1>
+
+        <div class="blogs-items">
+          <article class="blogs-item">
+            <div class="blogs-image">
+              <img src="./images/blogimage1.jpg" alt="How to Brew the Perfect Coffee" />
+            </div>
+            <div class="blogs-text">
+              <h2>How to Brew the Perfect Coffee</h2>
+              <span>Admin - 12 May, 2025</span>
+              <p>Tips and tricks to improve taste, aroma, and consistency.</p>
+              <button type="button">Read More</button>
+            </div>
+          </article>
+
+          <article class="blogs-item">
+            <div class="blogs-image">
+              <img src="./images/restaurant-kitchen-feature2-.webp" alt="Restaurant Hacks" />
+            </div>
+            <div class="blogs-text">
+              <h2>Restaurant Hacks</h2>
+              <span>Admin - 12 May, 2025</span>
+              <p>How to choose ingredients and build a good menu.</p>
+              <button type="button">Read More</button>
+            </div>
+          </article>
+
+          <article class="blogs-item">
+            <div class="blogs-image">
+              <img src="./images/healthy-eating-infographic3.jpg" alt="Healthy Meals Guide" />
+            </div>
+            <div class="blogs-text">
+              <h2>Healthy Meals Guide</h2>
+              <span>Admin - 12 May, 2025</span>
+              <p>Balanced recipes you can try for a better lifestyle.</p>
+              <button type="button">Read More</button>
+            </div>
+          </article>
+
+          <article class="blogs-item">
+            <div class="blogs-image">
+              <img src="./images/coffee-beans-guide.jpg" alt="Coffee Beans Buying Guide" />
+            </div>
+            <div class="blogs-text">
+              <h2>Coffee Beans Buying Guide</h2>
+              <span>Admin - 20 May, 2025</span>
+              <p>Learn how to choose the right coffee beans based on roast, origin, and brewing method.</p>
+              <button type="button">Read More</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./images/logo.png" alt="Logo" />
+        </div>
+
+        <div class="footer-links">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#review">Review</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social" aria-label="Social links">
+          <a href="#" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+        </div>
+      </div>
+
+      <p class="footer-copyright">&copy; 2025 All rights reserved.</p>
+    </footer>
+
+    <!-- Aside Navigation (Mobile Menu) -->
+    <aside class="aside-navigation" id="mobileMenu" aria-hidden="true">
+      <button class="close-menu" id="closeMenuBtn" type="button" aria-label="Close menu">&times;</button>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#review">Review</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+      </ul>
+    </aside>
+
+    <!-- Aside Cart -->
+    <aside class="aside-cart" id="sideCart" aria-hidden="true">
+      <div class="aside-cart-head">
+        <h3>Your Cart</h3>
+        <button class="close-cart" id="closeCartBtn" type="button" aria-label="Close cart">&times;</button>
+      </div>
+
+      <ul id="cartList"></ul>
+
+      <div class="cart-footer">
+        <p>Total: $<span id="cartTotal">0.00</span></p>
+        <button id="clearCartBtn" type="button">Clear</button>
+      </div>
+    </aside>
+
+    <!-- Aside Search -->
+    <aside class="aside-search" id="sideSearch" aria-hidden="true">
+      <button class="close-search" id="closeSearchBtn" type="button" aria-label="Close search">&times;</button>
+      <label for="asideSearchInput" class="sr-only">Search meals</label>
+      <input id="asideSearchInput" type="search" placeholder="Search meals..." aria-label="Search meals" />
+    </aside>
+
+    <!-- Modal -->
+    <div class="modal" id="recipeModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close modal">&times;</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</button>
+
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
